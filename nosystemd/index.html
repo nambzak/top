@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>No Systemd</title>
+	</head>
+	<body>
+		<h1>No systemd</h1>
+		<img src="images/nosystemd.png" alt="No Systemd Image" width="200" height="200" />
+		<blockquote>IF this is the solution, I want my problem back.</blockquote>
+		<p>This website tries to become a collection of resources pointing out reasons against systemd and what alternatives are available.</p>
+		<h2>What is systemd?</h2>
+		<p>systemd claims to be a good modern replacment for SysVinit &dash; a so called daemon. Usually the init daemon is the first process spawned by the kernel and thus has the <abbr title="Process ID">PID</abbr> #1 and<br />
+		   is responsible for spawning other daemons which are necessary for the <abbr title="Operating System">OS</abrr> to operate, e.g. networking, cron, syslog etc.
+		</p>
+		<p>List of daemons<sup>&#357;</sup>
+			<ul>
+				<li><s>systemd</s></li>
+				<li>SysVinit (<a href="https://www.nongnu.org/sysvinit/" target="__blank">home</a>)</li>
+				<li>OpenRC (<a href="https://wiki.gentoo.org/wiki/Project:OpenRC" target="__blank">home</a>)</li>
+				<li>runit (<a href="http://smarden.org/runit/" target="__blank">home</a>)</li>
+				<li>s6 (<a href="https://skarnet.org/software/s6/" target="__blank">home</a>)</li>
+				<li>Shepherd (<a href="https://www.gnu.org/software/shepherd/" target="__blank">home</a>)</li>
+				<li>finit (a href="https://troglobit.com/projects/finit/" target="__blank">home</a>)</li>
+				<li>Hummingbird (<a href="https://github.com/Sweets/hummingbird" target="__blank">repo</a>)</li>
+				<li>31init (<a href="https://gitlab.com/tearch-linux/applications-and-tools/31init" target="__blank">repo</a>)</li>
+				<li>Dinit (<a href="https://github.com/davmac314/dinit" target="__blank">repo</a>)</li>
+				<li>uselessd (<a href="https://bitbucket.org/Tarnyko/uselessd/src/linux-devel/" target="__blank">repo; inactive</a>)</li>
+				<li>Upstart (<a href="#" target="__blank">home; inactive</a>)</li>
+				<li>InitNG (<a href="https://github.com/initng/initng" target="__blank">repo; inactive</a>)</li>
+				<li>cinit (<a href="https://www.nico.schottelius.org/software/cinit/" target="__blank">home; inactive</a>)</li>
+				<li>minit (<a href="http://www.fefe.de/minit/" target="__blank">home; inactive</a>)</li>
+				<li>Epoch (<a href="https://universe2.us/epoch.html" target="__blank">home; inactive</a>)</li>
+			</ul>
+		</p>
+		<p><sup>*</su><em>inactive</em>: no development avtivity for few years</p>
+		<h2>What is so bad about systemd?</h2>
+		<p>List of notable bugs and security issues:
+			<ul>
+				</li><a href="https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1988119" target="__blank">Widespread outage was caused on Azure, when systemd 237-3ubutnu10.54 was published to the bionic-security pocjjket (instances could no longer resolve DNS queries, breaking<br />
+				     networking
+				</li>
+				<li><a href="https://github.com/systemd/systemd/issues/437" target="__blank">#437: timeX.google.com provide non standard time</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/1143" target="__blank">#1143: PID1 getting stuck printing &ldquo;systemd[1]. Time has been changed&rdquo; continously.</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/1312" target="__blank">#1312: restarting systemd service on dependency failure</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/1596" target="__blank">#1596: journactl -r -n flags incorectly processed</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/2402" target="__blank">#2402: Mount efivarfs read-only</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/2460" target="__blank">#2460: Showing status of service via systemctl is slow (&gt;10s) if disk journal is used</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/4863" target="__blank">#4863: systemd-journald drops all bytes after &lsquo;\0&rsquo;</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/5644" target="__blank">#5644: tmpfiles: R! /dir/.* destroys root</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6237" target="__blank">#6237: systemd can&rsquo; handle the process priviledge that belongs to user name starts with number such as 0day</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6369" target="__blank">#6369: hostnamed does not like fqdns with trailing dots</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6381" target="__blank">#6381: systemd-cryptsetup: Booting with encrypted partition fails instantly</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6478" target="__blank">#6478: `systemctl` should not consider active &rarr;failed as a successful operation</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6620" target="__blank">#6620: services writing to stdout become silent after journal restart</a></li>
+				<li><a href="https://github.com/systemd/systemd/pull/7184" target="https://github.com/systemd/systemd/pull/7184" target="__blank">#7184: resolved: fix loop on packets with pseudo dns types (CVE-2018-15908)</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/8579" target="__blank">#8579: systemd breaks my mouse</a></li>
+				<li><a href="https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1795921" target="__blank">Out-of Bounds write in systemd-networkd dhcpv6 option handling (CVE-2018-15688)</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/6078#issuecomment-308240231" target="__blank">#6078: Applying systemd-networkd configuration disconnects all other interfaces</a></li>
+				<li><a href="https://www.openwall.com/lists/oss-security/2019/01/09/3" target="__blank">System Down: A systemd-journald exploit (CVE-2018-16864, CVE-2018-16865, and CVE-2018-16866)</a></li>
+				<li><a href="https://github.com/systemd/systemd/issues/11810#issuecomment-489727505" target="__blank">#11810: Can&rsquo;t suspend again after suspending one time</a>(<a href="https://twitter.com/FiloSottile/status/1125840275346198529" target="__blank">explanation why this is bad</a>)</li>
+				<li><a href="https://bugs.freedesktop.org/show_bug.cgi?id=72759" target="__blank">Systemd user manager interferes with encryptfs &dash; private directory not being unmounted</a> ( also <a href="https://bugs.launchpad.net/ubuntu/+source/ecryptfs-utils/+bug/313812" target="__blank">umount of ecryptfs does not automatically clear the kayring</a> and <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=765854" target="__blank"> ecryptfs&dash;utils: Private<br />
+				    directory not automatically unmounted anymore on logout</a>)</li>
+				<li><a href="https://github.com/systemd/systemd/issues/2913" target="__blank">#2913: journald is unable to attribute messages incoming from processes that exited to their cgroup, due to /proc vs SCM CREDS race</a></li>
+			</ul>
+		</p>
+		<p>Other issues arising around systemd:
+			<ul>
+				<li><a href="https://github.com/systemd/systemd/pull/15206" target="__blank">systemd will be able to kill a process if he needs/wants more RAM</a></li>
+				<li><a href="https://lists.freedesktop.org/archives/systemd-devel/2010-September/000391.html" target="__blank">We need to enforce the use of systemd to everyone by the creator of systemd itself</a></li>
+				<li><a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=825394" target="__blank">systemd kill background processes after user logs out</a> (see also: <a href="https://github.com/tmux/tmux/issues/428" target="__blank">[RFE] add a way to run in a new systemd scope automatically</a>)</li>
+				<li><a href="https://www.theregister.com/2017/06/29/systemd_pwned_by_dns_query/" target="__blank">Don&rsquo;t panic, but Linux&rsquo;s Systemd can be pwned via an evil DNS query</a></li>
+				<li><a href="https://isc.sans.edu/diary/Systemd+Could+Fallback+to+Google+DNS/22516" target="__blank">Systemd Could Fallback to Google DNS?</a></li>
+				<li><a href="https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/1713457" target="__blank">DNS search domain not removed from resolv.conf on disconnect</a></li>
+				<li><a href="https://fredrikaverpil.github.io/2016/04/27/systemd-and-resource-limits/" atrget="__blank">systemd does not respect system wide resource limits</a></li>
+			</ul>
+		</p>
+		<h3>How do I get rid of systemd?</h3>
+		<p>Free your system by replacing systemd with an alternative init system.Here are a few guides on how to do that:
+			<ul>
+				<li><a href="https://wiki.ubuntu.com/SystemdForUpstartUsers#Permanent_switch_back_to_upstart" target="__blank">Ubuntu Wiki: Permanent switch back to upstart</a>
+			</ul>
+		</p>
+		<p>Aletrnatively you can use Linux distributions which do not use systemd by default :
+		
